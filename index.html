@@ -25,6 +25,7 @@ body{background:var(--bg);font-family:'Lato',Arial,sans-serif;color:var(--text);
 .tab[data-m="carte"].on{background:var(--red);}
 .tab[data-m="menus"].on{background:var(--purple);}
 .tab[data-m="videos"].on{background:var(--crimson);}
+.tab[data-m="admin"].on{background:#555;}
 .srch{margin-top:8px;position:relative;display:none;}
 .srch.show{display:block;}
 .srch input{width:100%;background:rgba(255,255,255,0.13);border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;padding:9px 34px 9px 13px;font-size:16px;color:#fff;outline:none;font-family:'Lato',Arial,sans-serif;}
@@ -127,6 +128,27 @@ mark{background:#ffe066;border-radius:2px;}
 .video-name{font-size:16px;flex:1;}
 .video-link{background:var(--crimson);color:#fff;border:none;border-radius:8px;padding:7px 13px;font-size:13px;font-family:'Playfair Display',Georgia,serif;font-weight:700;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;}
 .video-empty{padding:14px 13px;font-size:14px;color:var(--muted);font-style:italic;}
+
+.admin-page{display:none;padding:10px 12px 20px;}
+.admin-page.show{display:block;}
+.admin-section{background:var(--surface);border-radius:14px;margin-bottom:12px;overflow:hidden;box-shadow:var(--shadow);}
+.admin-section-title{font-family:'Playfair Display',Georgia,serif;font-size:14px;font-weight:800;padding:12px 13px;background:var(--text);color:#fff;display:flex;align-items:center;gap:8px;}
+.admin-body{padding:12px 13px;}
+.admin-label{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;display:block;}
+.admin-select{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;font-family:'Lato',Arial,sans-serif;background:#fff;color:var(--text);margin-bottom:10px;outline:none;}
+.admin-input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;font-family:'Lato',Arial,sans-serif;background:#fff;color:var(--text);margin-bottom:10px;outline:none;}
+.admin-input:focus,.admin-select:focus{border-color:var(--purple);}
+.admin-btn{width:100%;padding:11px;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Playfair Display',Georgia,serif;margin-bottom:6px;}
+.admin-btn-add{background:var(--purple);color:#fff;}
+.admin-btn-del{background:var(--bg);color:var(--orange);border:1.5px solid var(--orange);}
+.admin-list{margin-top:8px;}
+.admin-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;}
+.admin-item:last-child{border-bottom:none;}
+.admin-item-del{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;}
+.admin-tabs{display:flex;gap:6px;margin-bottom:12px;}
+.admin-tab{flex:1;padding:8px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;background:#fff;font-family:'Playfair Display',Georgia,serif;color:var(--muted);}
+.admin-tab.on{background:var(--purple);color:#fff;border-color:var(--purple);}
+
 .btm{position:fixed;bottom:0;left:0;right:0;background:var(--text);padding:12px 14px;padding-bottom:calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;z-index:100;}
 .btm-inf{color:rgba(255,255,255,0.6);font-size:14px;}
 .btm-inf strong{color:#fff;font-family:'Playfair Display',Georgia,serif;font-size:16px;}
@@ -142,6 +164,7 @@ mark{background:#ffe066;border-radius:2px;}
     <button class="tab" data-m="carte"><span class="ic">💳</span>CARTE</button>
     <button class="tab" data-m="menus"><span class="ic">🍽️</span>MENUS</button>
     <button class="tab" data-m="videos"><span class="ic">🎬</span>VIDÉOS</button>
+    <button class="tab" data-m="admin"><span class="ic">⚙️</span>CONFIG</button>
   </div>
   <div class="srch" id="srch">
     <input id="sinput" type="search" placeholder="Rechercher un article…" autocomplete="off" autocorrect="off" autocapitalize="off">
@@ -180,6 +203,94 @@ mark{background:#ffe066;border-radius:2px;}
   </div>
 </div>
 <div class="video-page" id="video-page"></div>
+
+<div class="admin-page" id="admin-page">
+  <div class="admin-tabs">
+    <button class="admin-tab on" id="atab-recettes">🍽️ Recettes</button>
+    <button class="admin-tab" id="atab-videos">🎬 Vidéos</button>
+  </div>
+
+  <!-- RECETTES -->
+  <div id="admin-recettes">
+    <div class="admin-section">
+      <div class="admin-section-title">➕ Ajouter une recette</div>
+      <div class="admin-body">
+        <label class="admin-label">Catégorie</label>
+        <select class="admin-select" id="a-cat-recette">
+          <option>Entrées</option>
+          <option>Viande</option>
+          <option>Poisson</option>
+          <option>Pâtes Riz Nouilles</option>
+          <option>Salade Autre</option>
+          <option>Accompagnements</option>
+          <option>Week-end</option>
+        </select>
+        <label class="admin-label">Nom du plat</label>
+        <input class="admin-input" id="a-nom-recette" type="text" placeholder="Ex: Poulet rôti citron" autocorrect="off">
+        <label class="admin-label">Ingrédients (séparés par des virgules)</label>
+        <input class="admin-input" id="a-ingr-recette" type="text" placeholder="Ex: Poulet rôti, Citrons bio, Ail" autocorrect="off">
+        <button class="admin-btn admin-btn-add" id="a-add-recette">Ajouter la recette</button>
+      </div>
+    </div>
+    <div class="admin-section">
+      <div class="admin-section-title">🗑️ Supprimer une recette</div>
+      <div class="admin-body">
+        <label class="admin-label">Catégorie</label>
+        <select class="admin-select" id="a-cat-del-recette">
+          <option>Entrées</option>
+          <option>Viande</option>
+          <option>Poisson</option>
+          <option>Pâtes Riz Nouilles</option>
+          <option>Salade Autre</option>
+          <option>Accompagnements</option>
+          <option>Week-end</option>
+        </select>
+        <div class="admin-list" id="a-list-recettes"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div id="admin-videos" style="display:none;">
+    <div class="admin-section">
+      <div class="admin-section-title">➕ Ajouter une vidéo</div>
+      <div class="admin-body">
+        <label class="admin-label">Catégorie</label>
+        <select class="admin-select" id="a-cat-video">
+          <option>Entrées</option>
+          <option>Viande</option>
+          <option>Poisson</option>
+          <option>Pâtes Riz Nouilles</option>
+          <option>Salade Autre</option>
+          <option>Accompagnements</option>
+          <option>Week-end</option>
+        </select>
+        <label class="admin-label">Nom de la recette</label>
+        <input class="admin-input" id="a-nom-video" type="text" placeholder="Ex: Moules marinières" autocorrect="off">
+        <label class="admin-label">Lien (Instagram, Facebook…)</label>
+        <input class="admin-input" id="a-url-video" type="url" placeholder="https://www.instagram.com/p/..." autocorrect="off" autocapitalize="off">
+        <button class="admin-btn admin-btn-add" id="a-add-video">Ajouter la vidéo</button>
+      </div>
+    </div>
+    <div class="admin-section">
+      <div class="admin-section-title">🗑️ Supprimer une vidéo</div>
+      <div class="admin-body">
+        <label class="admin-label">Catégorie</label>
+        <select class="admin-select" id="a-cat-del-video">
+          <option>Entrées</option>
+          <option>Viande</option>
+          <option>Poisson</option>
+          <option>Pâtes Riz Nouilles</option>
+          <option>Salade Autre</option>
+          <option>Accompagnements</option>
+          <option>Week-end</option>
+        </select>
+        <div class="admin-list" id="a-list-videos"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="btm">
   <div class="btm-inf" id="btm-inf"></div>
   <button class="btm-btn" id="btm-btn"></button>
@@ -694,7 +805,7 @@ function render(){
   var videoEl=document.getElementById("video-page");
   var infoBar=document.getElementById("info-bar");
   var srch=document.getElementById("srch");
-  secsEl.style.display="none";carteEl.className="carte";menuEl.className="menu-page";videoEl.className="video-page";infoBar.style.display="none";srch.className="srch";
+  secsEl.style.display="none";carteEl.className="carte";menuEl.className="menu-page";videoEl.className="video-page";document.getElementById("admin-page").className="admin-page";infoBar.style.display="none";srch.className="srch";
   var bi=document.getElementById("btm-inf"),btn=document.getElementById("btm-btn");
   if(mode==="maison"){
     secsEl.style.display="";infoBar.style.display="";srch.className="srch show";
@@ -726,6 +837,12 @@ function render(){
     bi.innerHTML="Menus";btn.textContent="Récap semaine";
     btn.onclick=function(){recapSemaine();};
     renderMenus();
+  }else if(mode==="admin"){
+    document.getElementById("admin-page").className="admin-page show";
+    bi.innerHTML="Configuration";btn.textContent="Ma liste";
+    btn.onclick=function(){mode="maison";render();};
+    refreshAdminLists();
+    return;
   }else if(mode==="videos"){
     videoEl.className="video-page show";
     bi.innerHTML="Mes recettes vidéo";btn.textContent="Ma liste";
@@ -739,8 +856,161 @@ document.getElementById("sinput").addEventListener("input",function(){q=this.val
 document.getElementById("sx").addEventListener("click",function(){document.getElementById("sinput").value="";q="";document.getElementById("sx").style.display="none";render();});
 document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){mode=t.dataset.m;render();});});
 
+
+// ── ADMIN ─────────────────────────────────────────────────────────────────
+var RECETTES_EXTRA_KEY = 'recettes_extra';
+var VIDEOS_KEY = 'videos_data';
+
+function loadExtras(){
+  try{
+    var re=localStorage.getItem(RECETTES_EXTRA_KEY);
+    if(re){
+      var extras=JSON.parse(re);
+      Object.keys(extras).forEach(function(cat){
+        if(RECETTES[cat]) RECETTES[cat]=RECETTES[cat].concat(extras[cat]);
+        extras[cat].forEach(function(r){ RECETTES[cat]=RECETTES[cat]||[]; });
+      });
+    }
+    var ve=localStorage.getItem(VIDEOS_KEY);
+    if(ve){
+      var vdata=JSON.parse(ve);
+      Object.keys(vdata).forEach(function(cat){ if(VIDEOS[cat]) VIDEOS[cat]=vdata[cat]; });
+    }
+  }catch(e){}
+}
+
+function getExtras(){
+  try{ var r=localStorage.getItem(RECETTES_EXTRA_KEY); return r?JSON.parse(r):{}; }catch(e){ return {}; }
+}
+function saveExtras(extras){ try{ localStorage.setItem(RECETTES_EXTRA_KEY,JSON.stringify(extras)); }catch(e){} }
+function getVideosData(){
+  try{ var r=localStorage.getItem(VIDEOS_KEY); return r?JSON.parse(r):{}; }catch(e){ return {}; }
+}
+function saveVideosData(vdata){ try{ localStorage.setItem(VIDEOS_KEY,JSON.stringify(vdata)); }catch(e){} }
+
+function isExtraRecette(cat,nom){
+  var extras=getExtras();
+  return extras[cat]&&extras[cat].some(function(r){ return r.n===nom; });
+}
+
+function refreshAdminLists(){
+  // Recettes list
+  var cat=document.getElementById('a-cat-del-recette').value;
+  var list=document.getElementById('a-list-recettes');
+  list.innerHTML='';
+  var extras=getExtras();
+  var extraItems=extras[cat]||[];
+  if(!extraItems.length){
+    list.innerHTML='<div style="color:var(--muted);font-size:14px;padding:8px 0;">Aucune recette ajoutée dans cette catégorie.</div>';
+    return;
+  }
+  extraItems.forEach(function(r){
+    var row=document.createElement('div'); row.className='admin-item';
+    var nm=document.createElement('span'); nm.textContent=r.n;
+    var del=document.createElement('button'); del.className='admin-item-del'; del.textContent='×';
+    del.addEventListener('click',function(){
+      var ex=getExtras();
+      ex[cat]=(ex[cat]||[]).filter(function(x){ return x.n!==r.n; });
+      saveExtras(ex);
+      // Remove from RECETTES live
+      RECETTES[cat]=(RECETTES[cat]||[]).filter(function(x){ return x.n!==r.n; });
+      refreshAdminLists();
+      showConfirm('"'+r.n+'" supprimé.',function(){});
+    });
+    row.appendChild(nm); row.appendChild(del); list.appendChild(row);
+  });
+
+  // Videos list
+  var vcat=document.getElementById('a-cat-del-video').value;
+  var vlist=document.getElementById('a-list-videos');
+  vlist.innerHTML='';
+  var vdata=getVideosData();
+  var vitems=vdata[vcat]||[];
+  if(!vitems.length){
+    vlist.innerHTML='<div style="color:var(--muted);font-size:14px;padding:8px 0;">Aucune vidéo dans cette catégorie.</div>';
+    return;
+  }
+  vitems.forEach(function(v){
+    var row=document.createElement('div'); row.className='admin-item';
+    var nm=document.createElement('span'); nm.textContent=v.n;
+    var del=document.createElement('button'); del.className='admin-item-del'; del.textContent='×';
+    del.addEventListener('click',function(){
+      var vd=getVideosData();
+      vd[vcat]=(vd[vcat]||[]).filter(function(x){ return x.n!==v.n; });
+      saveVideosData(vd);
+      VIDEOS[vcat]=(VIDEOS[vcat]||[]).filter(function(x){ return x.n!==v.n; });
+      refreshAdminLists();
+    });
+    row.appendChild(nm); row.appendChild(del); vlist.appendChild(row);
+  });
+}
+
+function initAdmin(){
+  // Tabs
+  document.getElementById('atab-recettes').addEventListener('click',function(){
+    document.getElementById('atab-recettes').className='admin-tab on';
+    document.getElementById('atab-videos').className='admin-tab';
+    document.getElementById('admin-recettes').style.display='';
+    document.getElementById('admin-videos').style.display='none';
+  });
+  document.getElementById('atab-videos').addEventListener('click',function(){
+    document.getElementById('atab-videos').className='admin-tab on';
+    document.getElementById('atab-recettes').className='admin-tab';
+    document.getElementById('admin-videos').style.display='';
+    document.getElementById('admin-recettes').style.display='none';
+  });
+
+  // Refresh lists on category change
+  document.getElementById('a-cat-del-recette').addEventListener('change',refreshAdminLists);
+  document.getElementById('a-cat-del-video').addEventListener('change',refreshAdminLists);
+
+  // Add recette
+  document.getElementById('a-add-recette').addEventListener('click',function(){
+    var cat=document.getElementById('a-cat-recette').value;
+    var nom=document.getElementById('a-nom-recette').value.trim();
+    var ingrStr=document.getElementById('a-ingr-recette').value.trim();
+    if(!nom){ showConfirm('Saisis un nom de plat.',function(){}); return; }
+    var ingrs=ingrStr?ingrStr.split(',').map(function(s){ return s.trim(); }).filter(function(s){ return s; }):[];
+    var newR={n:nom,i:ingrs};
+    // Add to RECETTES live
+    if(!RECETTES[cat]) RECETTES[cat]=[];
+    RECETTES[cat].push(newR);
+    RECETTES[cat].sort(function(a,b){ return collator.compare(a.n,b.n); });
+    // Persist
+    var extras=getExtras();
+    if(!extras[cat]) extras[cat]=[];
+    extras[cat].push(newR);
+    saveExtras(extras);
+    document.getElementById('a-nom-recette').value='';
+    document.getElementById('a-ingr-recette').value='';
+    showConfirm('"'+nom+'" ajouté dans '+cat+' !',function(){});
+    refreshAdminLists();
+  });
+
+  // Add video
+  document.getElementById('a-add-video').addEventListener('click',function(){
+    var cat=document.getElementById('a-cat-video').value;
+    var nom=document.getElementById('a-nom-video').value.trim();
+    var url=document.getElementById('a-url-video').value.trim();
+    if(!nom||!url){ showConfirm('Saisis un nom et un lien.',function(){}); return; }
+    var newV={n:nom,url:url};
+    if(!VIDEOS[cat]) VIDEOS[cat]=[];
+    VIDEOS[cat].push(newV);
+    var vdata=getVideosData();
+    if(!vdata[cat]) vdata[cat]=[];
+    vdata[cat].push(newV);
+    saveVideosData(vdata);
+    document.getElementById('a-nom-video').value='';
+    document.getElementById('a-url-video').value='';
+    showConfirm('"'+nom+'" ajouté dans Vidéos / '+cat+' !',function(){});
+    refreshAdminLists();
+  });
+}
+
 load();
+loadExtras();
 initMenuSearch();
+initAdmin();
 render();
 </script>
 </body>
