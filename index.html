@@ -9,55 +9,50 @@
 <title>Mes Courses</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#f5f0e8; --surface:#fffdf7; --text:#1a1207; --muted:#8a7d6b;
-  --orange:#d4541a; --blue:#1a6b8a; --green:#2a6b3c; --red:#e2001a;
-  --border:#e0d8cc; --shadow:0 2px 12px rgba(26,18,7,0.08);
-}
+:root{--bg:#f5f0e8;--surface:#fffdf7;--text:#1a1207;--muted:#8a7d6b;--orange:#d4541a;--blue:#1a6b8a;--green:#2a6b3c;--red:#e2001a;--purple:#7b4fa6;--crimson:#c0392b;--border:#e0d8cc;--shadow:0 2px 12px rgba(26,18,7,0.08);}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);min-height:100vh;padding-bottom:86px;}
 
 /* HEADER */
-.hdr{background:var(--text);padding:16px 14px 12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,0.3);}
-.hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;}
+.hdr{background:var(--text);padding:14px 12px 10px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,0.3);}
+.hdr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;}
 .logo span{color:var(--orange);}
 
 /* TABS */
-.tabs{display:flex;gap:5px;}
-.tab{flex:1;padding:8px 2px;border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;cursor:pointer;text-align:center;line-height:1.3;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);transition:all .2s;}
-.tab .ic{font-size:14px;display:block;margin-bottom:2px;}
+.tabs{display:flex;gap:4px;}
+.tab{flex:1;padding:7px 2px;border:none;border-radius:9px;font-family:'Syne',sans-serif;font-size:9px;font-weight:700;cursor:pointer;text-align:center;line-height:1.3;background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.5);transition:all .2s;}
+.tab .ic{font-size:13px;display:block;margin-bottom:2px;}
 .tab.on{color:#fff;}
 .tab[data-m="maison"].on{background:var(--orange);}
 .tab[data-m="magasin"].on{background:var(--blue);}
-.tab[data-m="panier"].on{background:var(--green);}
 .tab[data-m="carte"].on{background:var(--red);}
+.tab[data-m="menus"].on{background:var(--purple);}
+.tab[data-m="videos"].on{background:var(--crimson);}
 
 /* SEARCH */
-.srch{margin-top:10px;position:relative;display:none;}
+.srch{margin-top:8px;position:relative;display:none;}
 .srch.show{display:block;}
-.srch input{width:100%;background:rgba(255,255,255,0.13);border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;padding:10px 36px 10px 14px;font-size:15px;color:#fff;outline:none;font-family:'DM Sans',sans-serif;}
+.srch input{width:100%;background:rgba(255,255,255,0.13);border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;padding:9px 34px 9px 13px;font-size:15px;color:#fff;outline:none;font-family:'DM Sans',sans-serif;}
 .srch input::placeholder{color:rgba(255,255,255,0.4);}
-.srch-x{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.5);font-size:17px;cursor:pointer;display:none;}
+.srch-x{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,0.5);font-size:16px;cursor:pointer;display:none;}
 
 /* INFO */
-.info{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:var(--surface);border-bottom:1px solid var(--border);}
-.info-n{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;}
-.info-n b{font-size:18px;}
+.info{display:flex;align-items:center;justify-content:space-between;padding:8px 13px;background:var(--surface);border-bottom:1px solid var(--border);}
+.info-n{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;}
+.info-n b{font-size:17px;}
 .c-orange b{color:var(--orange);}
 .c-blue b{color:var(--blue);}
-.c-green b{color:var(--green);}
 .rst{font-size:12px;color:var(--muted);background:none;border:1px solid var(--border);border-radius:8px;cursor:pointer;padding:5px 10px;font-family:'DM Sans',sans-serif;}
 
-/* CONFIRM OVERLAY */
+/* OVERLAY CONFIRM */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:999;align-items:flex-end;justify-content:center;}
 .overlay.show{display:flex;}
 .confirm-box{background:#fff;border-radius:20px 20px 0 0;padding:24px 20px 36px;width:100%;max-width:480px;text-align:center;}
-.confirm-box p{font-size:16px;font-weight:500;color:var(--text);margin-bottom:20px;line-height:1.4;}
+.confirm-box p{font-size:15px;font-weight:500;color:var(--text);margin-bottom:18px;line-height:1.5;white-space:pre-wrap;}
 .confirm-btns{display:flex;gap:10px;}
-.confirm-btns button{flex:1;padding:14px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;}
+.confirm-btns button{flex:1;padding:13px;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;}
 .cb-yes{background:var(--orange);color:#fff;}
-.cb-yes.green{background:var(--green);}
 .cb-no{background:var(--bg);color:var(--muted);}
 
 /* SECTIONS */
@@ -70,34 +65,22 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);min
 .chev{color:var(--muted);font-size:10px;transition:transform .2s;}
 .sec.fold .chev{transform:rotate(-90deg);}
 .sec.fold .sec-body{display:none;}
-
-/* ITEMS */
 .itm{display:flex;align-items:center;gap:10px;padding:11px 13px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s;}
 .itm:last-child{border-bottom:none;}
 .itm:active{background:var(--bg);}
 .box{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;transition:all .18s;}
 .ck{display:none;font-size:12px;font-weight:700;}
 .lbl{font-size:15px;flex:1;}
-
-/* maison sélectionné = orange */
 .m-maison .itm.sel .box{background:var(--orange);border-color:var(--orange);}
 .m-maison .itm.sel .ck{display:block;color:#fff;}
 .m-maison .itm.sel .lbl{font-weight:500;}
-
-/* magasin à prendre = cercle bleu, pris = vert barré */
 .m-magasin .box{border-radius:50%;border-color:var(--blue);}
 .m-magasin .itm.got .box{background:var(--green);border-color:var(--green);}
 .m-magasin .itm.got .ck{display:block;color:#fff;}
 .m-magasin .itm.got .lbl{color:#aaa;text-decoration:line-through;}
-
-/* panier = tout vert */
-.m-panier .box{background:var(--green);border-color:var(--green);}
-.m-panier .ck{display:block;color:#fff;}
-.m-panier .lbl{color:#555;}
-
-/* EMPTY */
 .empty{text-align:center;padding:50px 20px;color:var(--muted);}
 .empty .ei{font-size:46px;margin-bottom:10px;}
+mark{background:#ffe066;border-radius:2px;}
 
 /* CARTE */
 .carte{display:none;padding:24px 14px;flex-direction:column;align-items:center;gap:18px;}
@@ -110,26 +93,73 @@ body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text);min
 .bc-num{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;letter-spacing:2px;color:var(--text);}
 .carte-tip{background:var(--bg);border-radius:12px;padding:13px 14px;font-size:13px;color:var(--muted);text-align:center;line-height:1.5;width:100%;max-width:380px;}
 
+/* MENUS */
+.menu-page{display:none;padding:10px 12px 20px;}
+.menu-page.show{display:block;}
+.week-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface);border-radius:12px;margin-bottom:10px;box-shadow:var(--shadow);}
+.week-label{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;}
+.week-btn{background:none;border:1px solid var(--border);border-radius:8px;padding:5px 12px;font-size:18px;cursor:pointer;}
+.menu-srch{margin-bottom:10px;}
+.menu-srch input{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:9px 13px;font-size:15px;color:var(--text);outline:none;font-family:'DM Sans',sans-serif;box-shadow:var(--shadow);}
+.day-card{background:var(--surface);border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow);}
+.day-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;padding:10px 13px;background:var(--purple);color:#fff;}
+.repas-block{border-bottom:1px solid var(--border);}
+.repas-block:last-child{border-bottom:none;}
+.repas-header{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;cursor:pointer;}
+.repas-label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;}
+.repas-plat{font-size:14px;font-weight:500;color:var(--text);}
+.repas-add{font-size:11px;color:var(--purple);background:none;border:1px solid var(--purple);border-radius:6px;padding:3px 8px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.plat-picker{display:none;padding:8px 13px 12px;border-top:1px solid var(--border);}
+.plat-picker.show{display:block;}
+.plat-cat-title{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin:8px 0 4px;padding:0 2px;}
+.plat-btn{display:block;width:100%;margin:2px 0;padding:9px 12px;border:1px solid var(--border);border-radius:10px;font-size:14px;background:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;text-align:left;}
+.plat-btn:active{background:var(--bg);}
+.plat-btn.chosen{background:var(--purple);color:#fff;border-color:var(--purple);}
+.ingr-list{padding:6px 13px 10px;background:rgba(123,79,166,0.05);}
+.ingr-item{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);}
+.ingr-item:last-child{border-bottom:none;}
+.ingr-check{width:20px;height:20px;border-radius:5px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#fff;cursor:pointer;}
+.ingr-check.on{background:var(--purple);border-color:var(--purple);}
+.ingr-check.on::after{content:'✓';color:#fff;font-size:11px;font-weight:700;}
+.ingr-name{font-size:14px;flex:1;}
+.ingr-name.linked{color:var(--purple);}
+.ingr-name.unlinked{color:var(--muted);}
+.menu-search-results{display:none;}
+.menu-search-results.show{display:block;}
+
+/* VIDEOS */
+.video-page{display:none;padding:10px 12px 20px;}
+.video-page.show{display:block;}
+.video-sec{background:var(--surface);border-radius:14px;margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow);}
+.video-sec-hdr{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;cursor:pointer;border-bottom:1px solid var(--border);}
+.video-sec-name{font-family:'Syne',sans-serif;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;display:flex;align-items:center;gap:6px;}
+.video-sec-ct{font-size:11px;color:var(--muted);background:var(--bg);padding:2px 7px;border-radius:10px;}
+.video-sec.fold .video-body{display:none;}
+.video-sec.fold .chev-v{transform:rotate(-90deg);}
+.chev-v{color:var(--muted);font-size:10px;transition:transform .2s;}
+.video-item{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;border-bottom:1px solid var(--border);}
+.video-item:last-child{border-bottom:none;}
+.video-name{font-size:15px;flex:1;}
+.video-link{background:var(--crimson);color:#fff;border:none;border-radius:8px;padding:6px 12px;font-size:12px;font-family:'Syne',sans-serif;font-weight:700;cursor:pointer;white-space:nowrap;text-decoration:none;display:inline-block;}
+.video-empty{padding:14px 13px;font-size:13px;color:var(--muted);font-style:italic;}
+
 /* BOTTOM */
 .btm{position:fixed;bottom:0;left:0;right:0;background:var(--text);padding:12px 14px;padding-bottom:calc(12px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;z-index:100;}
 .btm-inf{color:rgba(255,255,255,0.6);font-size:13px;}
 .btm-inf strong{color:#fff;font-family:'Syne',sans-serif;font-size:15px;}
 .btm-btn{background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;padding:8px 13px;color:#fff;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;}
-
-mark{background:#ffe066;border-radius:2px;}
 </style>
 </head>
 <body>
 
 <div class="hdr">
-  <div class="hdr-top">
-    <div class="logo">Mes <span>Courses</span></div>
-  </div>
+  <div class="hdr-top"><div class="logo">Mes <span>Courses</span></div></div>
   <div class="tabs">
     <button class="tab on" data-m="maison"><span class="ic">🏠</span>MAISON</button>
     <button class="tab" data-m="magasin"><span class="ic">🛍️</span>MAGASIN</button>
-    <button class="tab" data-m="panier"><span class="ic">🧺</span>PANIER</button>
     <button class="tab" data-m="carte"><span class="ic">💳</span>CARTE</button>
+    <button class="tab" data-m="menus"><span class="ic">🍽️</span>MENUS</button>
+    <button class="tab" data-m="videos"><span class="ic">🎬</span>VIDÉOS</button>
   </div>
   <div class="srch" id="srch">
     <input id="sinput" type="search" placeholder="Rechercher un article…" autocomplete="off" autocorrect="off" autocapitalize="off">
@@ -164,257 +194,563 @@ mark{background:#ffe066;border-radius:2px;}
   <div class="carte-tip">📱 Présente cet écran en caisse pour scanner ta carte.</div>
 </div>
 
+<div class="menu-page" id="menu-page">
+  <div class="menu-srch">
+    <input id="menu-sinput" type="search" placeholder="🔍 Rechercher un plat…" autocomplete="off" autocorrect="off" autocapitalize="off">
+  </div>
+  <div class="menu-search-results" id="menu-results"></div>
+  <div id="menu-main">
+    <div class="week-nav">
+      <button class="week-btn" id="prev-week">‹</button>
+      <div class="week-label" id="week-label"></div>
+      <button class="week-btn" id="next-week">›</button>
+    </div>
+    <div id="days-container"></div>
+  </div>
+</div>
+
+<div class="video-page" id="video-page"></div>
+
 <div class="btm">
   <div class="btm-inf" id="btm-inf"></div>
   <button class="btm-btn" id="btm-btn"></button>
 </div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────
+// ── DATA COURSES ──────────────────────────────────────────────────────────
 const DATA = [
-  {n:"Bazar / Divers",e:"🛒",i:["Agrafeuse","Ampoule Raphou 12V 50hz","Assiettes","Bloc fiches bristol","Carnet","Cartes visite","Colle","Crème pied","Cure dent","Cadeaux Pâques","Deco anniv Toinou","Eau déminéralisée","Feutre rouge et noir","Feutres veleda","Huile barbe","Œufs de mouettes","Papier collant habits","Pique brochettes","Protège slips","Sachet cadeau anniv Tom","Souris tip ex","Stabilo jaune","Stylo 4 couleurs","Tupperware antoine","Tupperware plastique","Verre bodega","Verre Tom"]},
+  {n:"Bazar / Divers",e:"🛒",i:["Agrafeuse","Ampoule Raphou 12V 50hz","Assiettes","Bloc fiches bristol","Cadeaux Pâques","Carnet","Cartes visite","Colle","Crème pied","Cure dent","Deco anniv Toinou","Eau déminéralisée","Feutre rouge et noir","Feutres veleda","Huile barbe","Œufs de mouettes","Papier collant habits","Pique brochettes","Protège slips","Sachet cadeau anniv Tom","Souris tip ex","Stabilo jaune","Stylo 4 couleurs","Tupperware antoine","Tupperware plastique","Verre bodega","Verre Tom"]},
   {n:"Hygiène & Beauté",e:"🧴",i:["Bougies","Brosse à dents","Brosse pour brosse électrique oral B","Cotons tige","Crème cheveux","Demaq'Up","Dentifrice","Deo Antoine Axe Gold","Deo Ced","Eau bombe","Éponges bain","Gel Antoine","Gel douche enfant","Gel vivelle dop","H&S","Kleenex","Lingettes cucu","Mousse à raser","Pansement","Pansement ampoule","Rasoirs","Sanex","Sanex deo raphou","Savon main","Savon Tom","Sèche cheveux"]},
   {n:"Traiteur / Charcuterie fine",e:"🥓",i:["Chiffonnade jambon blanc","Chiffonnade jambon cru","Chorizo","Pancetta très fine","Parmesan","Saucisson truffe le plus sec possible","Tomates séchées","Troffi x2","Truffe"]},
   {n:"Boucherie",e:"🥩",i:["Bœuf aiguillettes de rumsteak","Carré d'agneau","Chipolatas","Côtelettes","Épaule agneau","Épaule agneau découpée","Faux filet bœuf","Jarret de porc","Joue de bœuf","Merguez","Os à moelle","Osso bucco","Pied de porc","Porc Échine tranche","Porc poitrine","Poulet rôti","Rôtisserie","Saucisse toulouse","Sauté de porc","Selle agneau","Steak haché","Veau"]},
   {n:"Fromagerie / Épicerie fine coupe",e:"🧀",i:["Choucroute","Comté coupe","Édam vieux","Fromages coupe","Jambon coupe","Mimolette vieille","Pain pita","Saucisse italienne","Saucisson"]},
   {n:"Frais emballé (charcuterie / plats)",e:"🥗",i:["Bacon","Chorizo","Croque monsieur","Dés de jambon","Gnocchi","Jambon","Jambon cru","Panisses","Patanegra","Pâtes fraîches","Polenta","Ravioles","Raviolis","Saucisses Strasbourg","Viande des grisons"]},
   {n:"Volaille / Viande libre-service",e:"🍗",i:["Aiguillettes de poulet","Ailes de poulet x12","Blanc de poulet x8","Bœuf haché","Coquelets x3","Cuisses de canard","Cuisse de poulet","Escalope de dinde x6","Magret de canard","Œufs de caille écalés","Pilons de poulet x8","Saucisses montbéliard","Veau haché"]},
-  {n:"Fruits & Légumes",e:"🥦",i:["Ail","Ananas","Aneth","Artichauts","Asperges","Aubergines x5","Avocats","Basilic","Betterave","Brocolis","Carotte","Cebette","Céleri","Cerises","Cerneaux noix","Champignons","Champignons shitake","Chou fleur","Chou chinois ou chou blanc","Ciboulette","Citron bio","Citrons bio","Citrons verts","Clémentine","Concombre x2","Coriandre","Courge","Échalotes","Endives mini","Épinard","Fenouil","Fèves","Framboises","Fraises","Gaspacho","Gingembre","Haricots frais","Kiwi","Laitue","Mandarine","Mangue","Mâche x2","Melon x2","Menthe","Myrtilles","Navet","Nectarine","Œufs de mouettes","Oignon rouge x2","Oignons blancs","Oignons frais","Oignons paille x2","Olives apéro x2","Orange","Pastèque","Patate douce","Pêches","Pêches plates","Persil","Petites tomates","Pignons","Poireaux","Poivrons rouge x2","Pommes x3","Pommes de terre","Pommes de terre grenailles","Pommes rouges","Pousse de soja","Pruneaux","Radis","Raisin","Riz sushis","Salade romaine","Salade verte","Sushis","Tomates normales x2","Wasabi"]},
+  {n:"Fruits & Légumes",e:"🥦",i:["Ail","Ananas","Aneth","Artichauts","Asperges","Aubergines x5","Avocats","Basilic","Betterave","Brocolis","Carotte","Cebette","Céleri","Cerises","Cerneaux noix","Champignons","Champignons shitake","Chou chinois ou chou blanc","Chou fleur","Ciboulette","Citron bio","Citrons bio","Citrons verts","Clémentine","Concombre x2","Coriandre","Courge","Échalotes","Endives mini","Épinard","Fenouil","Fèves","Framboises","Fraises","Gaspacho","Gingembre","Haricots frais","Kiwi","Laitue","Mandarine","Mangue","Mâche x2","Melon x2","Menthe","Myrtilles","Navet","Nectarine","Oignon rouge x2","Oignons blancs","Oignons frais","Oignons paille x2","Olives apéro x2","Orange","Pastèque","Patate douce","Pêches","Pêches plates","Persil","Petites tomates","Pignons","Poireaux","Poivrons rouge x2","Pommes de terre","Pommes de terre grenailles","Pommes rouges","Pommes x3","Pousse de soja","Pruneaux","Radis","Raisin","Riz sushis","Salade romaine","Salade verte","Sushis","Tomates normales x2","Wasabi"]},
   {n:"Rayon frais (œufs, lardons…)",e:"🥚",i:["Bacon","Lardons x3","Œufs de caille","Pâte brisée x2","Pâtes à pizza x3"]},
   {n:"Yaourts & Boissons froides",e:"🥛",i:["Choco Fresh","Crêpes","Danonino","Dessert Cathy","Fromage blanc","Jus d'ananas","Jus de fruits","Kinder puingui","Yaourt","Yaourt grec","Yaourt nature","Yop"]},
-  {n:"Fromage libre-service",e:"🫙",i:["Beurre","Burrata","Burrata à la truffe","Bûche de chèvre","Caprice des dieux indiv","Cheddar","Comté","Crème fraîche épaisse","Crème fraiche semi épaisse","Crème fraîche liquide","Crottin","Emmental tranché","Fêta","Fromage raclette","Gervais","Gouda","Mozza bille","Mozza râpée","Morbier","Parmesan","Parmesan râpé","Râpé","Ricotta","Roquefort","Saint Moret grosse barquette","Saint Moret individuel","Tartare"]},
+  {n:"Fromage libre-service",e:"🫙",i:["Beurre","Burrata","Burrata à la truffe","Bûche de chèvre","Caprice des dieux indiv","Cheddar","Comté","Crème fraîche épaisse","Crème fraiche semi épaisse","Crème fraîche liquide","Crottin","Emmental tranché","Fêta","Fromage raclette","Gervais","Gouda","Morbier","Mozza bille","Mozza râpée","Parmesan","Parmesan râpé","Râpé","Ricotta","Roquefort","Saint Moret grosse barquette","Saint Moret individuel","Tartare"]},
   {n:"Poissonnerie & Conserves poisson",e:"🐟",i:["Anchois","Blinis","Brandade","Cabillaud","Cacolac","Calamar","Crevettes","Croûtons","Écrevisses","Guacamole","Hareng à l'huile","Lait","Lotte","Maquereau au poivre","Moules","Œufs de saumon","Œufs x10","Poisson","Poutargue","Saumon frais","Saumon fumé tranches","Saumon gravlax x2","Saumon mi cuit x2","Saumon sésame x4","Thon","Tzatziki"]},
-  {n:"Épicerie salée & Condiments",e:"🧂",i:["Bouillon bœuf","Bouillon volaille","Bouquet garni","Câpres","Concentré de tomates","Cornichons","Curcuma","Fécule de Pdt","Gros sel de guérande","Ketchup","Maïs","Mayo Amora fouettée","Mini pain burger","Moutarde","Moutarde ancienne","Olives noires","Olives noires kerretz","Olives vertes","Pain burger","Pain de mie","Paprika doux","Poivre","Riste aubergine","Royco asperge","Saké","Sardines","Sauce soja sucrée","Sel fin La Baleine","Sel moulin","Thon à l'huile","Thon naturel","Vinaigre blanc","Vinaigre de riz","Vinaigrette","Oignons frits"]},
-  {n:"Épicerie féculents & Conserves",e:"🍝",i:["Beurre de cacahuète","Cannelloni","Champignons","Champignons noirs","Concentré de tomates","Coulis de tomates","Couscous","Curry vert","Ebly","Feuille de riz","Gressins","Kit Fajitas","Lasagne","Lentilles","Lait de coco","Nouilles chinoises","Pain burger","Pâtes","Pâtes alphabet","Pâtes blé dur","Pâtes coquillettes","Pâtes orecchiette","Perles de blé","Pois chiche","Purée","Quinoa","Riz","Riz thaï 1kg mini","Risotto","Sauce nems","Tomates en boîte","Tomates pelées","Vermicelles de riz"]},
+  {n:"Épicerie salée & Condiments",e:"🧂",i:["Bouillon bœuf","Bouillon volaille","Bouquet garni","Câpres","Concentré de tomates","Cornichons","Coulis de tomates","Curcuma","Fécule de Pdt","Gros sel de guérande","Ketchup","Maïs","Mayo Amora fouettée","Mini pain burger","Moutarde","Moutarde ancienne","Oignons frits","Olives noires","Olives noires kerretz","Olives vertes","Pain burger","Pain de mie","Paprika doux","Poivre","Riste aubergine","Royco asperge","Saké","Sardines","Sauce soja sucrée","Sel fin La Baleine","Sel moulin","Thon à l'huile","Thon naturel","Vinaigre blanc","Vinaigre de riz","Vinaigrette"]},
+  {n:"Épicerie féculents & Conserves",e:"🍝",i:["Beurre de cacahuète","Cannelloni","Champignons","Champignons noirs","Couscous","Curry vert","Ebly","Feuille de riz","Gressins","Kit Fajitas","Lasagne","Lait de coco","Lentilles","Nouilles chinoises","Pain burger","Pâtes","Pâtes alphabet","Pâtes blé dur","Pâtes coquillettes","Pâtes orecchiette","Perles de blé","Pois chiche","Purée","Quinoa","Riz","Riz thaï 1kg mini","Risotto","Sauce nems","Tomates en boîte","Tomates pelées","Vermicelles de riz"]},
   {n:"Huiles & Apéritif",e:"🫒",i:["Bretzels","Cacahuètes","Chips","Chips barbecue","Chips de légumes","Chips lentilles","Huile friture Frial Rouge","Huile olive","Isio 4","Pistaches"]},
   {n:"Biscuits & Céréales petit-déj",e:"🍪",i:["Baiochi","Barre M&M'S","Björg Avoine","Céréales Monoprix","Crêpe dentelle","Crêpes wahou","Finger","Galette de riz choco","Gaufres chocolat","Gaufres sucre","Granola","Lulu l'ourson","Mikado","Napolitain","Petits écoliers","Prince"]},
   {n:"Pâtisserie & Confiserie",e:"🍫",i:["Bonbons Haribo","Chapelure","Chocolat","Chocolat Lindt noisettes","Chocolat Lindt noir 70%","Farine","Maïzena","Miel","Nutella","Pâte d'amande","Piment Tabasco vert","Sucre en poudre","Sucre morceaux","Sucre vanillé"]},
   {n:"Compotes & Petit-déjeuner",e:"🥣",i:["Bonjour","Compote monop","Compotes rouges","Compotes vertes","Cookie crisps","Corn flakes","Fitness Monoprix","Galette Maïs","Krisprols"]},
   {n:"Cave / Alcools",e:"🍾",i:["Aperol","Bitter San Pellegrino","Champagne rosé","Prosecco","Ricard","St germain"]},
-  {n:"Entretien & Ménage",e:"🧹",i:["Ajax vitres","Antical","Capsuleslave vaisselle","Capsules machine à laver","Décapfour","Désodorisant toilette","Destop","Éponges rouges","Éponges vertes","Feuille papier cuisson","Javel","Javel gel","Javel spray","K2R","Lessive poudre","Lingettes cucul","Lingettes désinfectantes wc","Lingettes WC","Liquide vaisselle petit","M. propre sol","Papier alu","Pastilles javel","PQ","Sac congélation","Sac glaçons","Sac poubelle 50 L","Sac poubelle 100 L","Sanitol cuisine","Sopalin","WC net"]},
+  {n:"Entretien & Ménage",e:"🧹",i:["Ajax vitres","Antical","Capsules machine à laver","Capsules lave vaisselle","Décapfour","Désodorisant toilette","Destop","Éponges rouges","Éponges vertes","Feuille papier cuisson","Javel","Javel gel","Javel spray","K2R","Lessive poudre","Lingettes cucul","Lingettes désinfectantes wc","Lingettes WC","Liquide vaisselle petit","M. propre sol","Papier alu","Pastilles javel","PQ","Sac congélation","Sac glaçons","Sac poubelle 50 L","Sac poubelle 100 L","Sanitol cuisine","Sopalin","WC net"]},
   {n:"Surgelés",e:"❄️",i:["Brocolis","Croustines","Épinards congelés x2","Frites allumettes","Gambas","Glaçons","Haricots verts","Mars glaces","Petit pois","Poisson","Poisson pané","Pommes de terre noisettes","Pommes de terre rissolées","Pops","Steak haché"]},
   {n:"Boissons & Pain emballé",e:"🥤",i:["Badoit","Boisson anniversaire","Cidre","Coca","Coca zéro","Corona","Eau","Fruit shoot","Fustea","Jus d'abricot","Jus pomme","Oasis","PaC citron","Pago multifruit","Pain complet","Pain tranché","Pain tranché noir","Petites bouteilles eau"]}
 ];
-// Tri alphabétique sans accent de chaque rayon
-const collator = new Intl.Collator('fr', {sensitivity:'base'});
-DATA.forEach(sec => sec.i.sort((a,b) => collator.compare(a,b)));
-const TOTAL = DATA.reduce((s,sec)=>s+sec.i.length, 0);
+const collator = new Intl.Collator('fr',{sensitivity:'base'});
+DATA.forEach(function(sec){ sec.i.sort(function(a,b){ return collator.compare(a,b); }); });
+const TOTAL = DATA.reduce(function(s,sec){ return s+sec.i.length; },0);
 
-// ── STATE ────────────────────────────────────────────────────────────────
-const SK = 'courses_v4';
-let S = {sel:{}, got:{}};   // sel = sélectionné maison, got = dans le panier
-let mode = 'maison';
-let q = '';
+// ── RECETTES ──────────────────────────────────────────────────────────────
+const RECETTES = {
+  "Entrées":[
+    {n:"Anchoïade",i:["Anchois","Chou fleur","Carotte","Concombre x2","Petites tomates","Endives mini","Fenouil"]},
+    {n:"Brandade",i:["Brandade"]},
+    {n:"Caponata",i:["Aubergines x5","Oignons paille x2","Câpres","Olives vertes","Olives noires"]},
+    {n:"Carottes râpées",i:["Carotte"]},
+    {n:"Chou chinois lardons",i:["Chou chinois ou chou blanc","Lardons x3"]},
+    {n:"Fève",i:["Fèves"]},
+    {n:"Melon jambon",i:["Melon x2","Jambon cru"]},
+    {n:"Œufs de saumon",i:["Œufs de saumon"]},
+    {n:"Œufs mimosa",i:["Œufs x10"]},
+    {n:"Poivrons grillés",i:["Poivrons rouge x2"]},
+    {n:"Radis",i:["Radis"]},
+    {n:"Salade artichauts crus",i:["Artichauts"]},
+    {n:"Salade champignon parmesan",i:["Champignons","Parmesan"]},
+    {n:"Salade endives roquefort comté noix",i:["Endives mini","Roquefort","Comté","Cerneaux noix"]},
+    {n:"Salade tomates concombre fêta",i:["Tomates normales x2","Concombre x2","Fêta"]},
+    {n:"Salade tomates Mozza",i:["Tomates normales x2","Mozza bille"]},
+    {n:"Saucisson",i:["Saucisson"]},
+    {n:"Soupe légumes",i:["Courgette bio x2","Carotte","Brocolis","Haricots frais","Oignons paille x2"]},
+    {n:"Soupe potimaron",i:["Ail","Oignons paille x2"]},
+    {n:"Tagliatelles courgettes fêta",i:["Courgette bio x2","Fêta"]}
+  ],
+  "Viande":[
+    {n:"Aiguillettes de poulet",i:["Aiguillettes de poulet"]},
+    {n:"Boulettes",i:["Bœuf haché","Veau haché","Ail","Persil"]},
+    {n:"Boulettes de poulet",i:["Blanc de poulet x8","Chapelure","Œufs x10","Farine"]},
+    {n:"Canard pommes de terre sautées",i:["Cuisses de canard","Pommes de terre"]},
+    {n:"Cuisses et ailes de poulet au four",i:["Cuisse de poulet","Ailes de poulet x12"]},
+    {n:"Hachis parmentier bœuf",i:["Bœuf haché","Veau haché","Ail","Concentré de tomates"]},
+    {n:"Hachis parmentier canard",i:["Purée","Cuisses de canard"]},
+    {n:"Œuf au plat",i:["Œufs x10"]},
+    {n:"Omelette",i:["Œufs x10"]},
+    {n:"Porc façon thaï",i:["Porc Échine tranche","Ail","Échalotes","Sauce nems","Sauce soja sucrée"]},
+    {n:"Poulet au curry",i:["Blanc de poulet x8","Curry vert","Ail","Oignons paille x2","Lait de coco"]},
+    {n:"Poulet aux olives",i:["Cuisse de poulet","Oignons paille x2","Ail","Concentré de tomates","Olives vertes"]},
+    {n:"Poulet pané",i:["Blanc de poulet x8","Chapelure","Farine","Œufs x10"]},
+    {n:"Riz thaï bœuf cacahuète concombre",i:["Bœuf haché","Ail","Échalotes","Sauce nems","Sauce soja sucrée","Concombre x2"]},
+    {n:"Saucisse montbéliard",i:["Saucisses montbéliard","Œufs x10","Brocolis"]},
+    {n:"Sauté d'agneau",i:["Épaule agneau découpée","Oignons paille x2","Ail"]},
+    {n:"Sauté de porc",i:["Porc Échine tranche","Ail","Oignons paille x2"]},
+    {n:"Steak",i:["Faux filet bœuf"]},
+    {n:"Steaks hachés",i:["Bœuf haché"]},
+    {n:"Porc échine tranche",i:["Porc Échine tranche"]},
+    {n:"Veau à l'ail",i:["Veau","Ail"]},
+    {n:"Veau jambon cru crème fraîche",i:["Veau","Crème fraîche épaisse","Jambon cru"]},
+    {n:"Viande des grisons mozza parmesan",i:["Viande des grisons","Mozza bille","Parmesan"]}
+  ],
+  "Poisson":[
+    {n:"Assiette de la mer",i:["Hareng à l'huile","Maquereau au poivre","Thon à l'huile"]},
+    {n:"Cabillaud",i:["Cabillaud"]},
+    {n:"Calamars ail persil",i:["Calamar","Ail","Persil"]},
+    {n:"Crevettes mayo",i:["Crevettes","Mayo Amora fouettée"]},
+    {n:"Crevettes sautées",i:["Crevettes","Ail","Persil"]},
+    {n:"Crevettes sautées au curry",i:["Crevettes","Échalotes","Ail","Curry vert","Lait de coco"]},
+    {n:"Lotte à l'ail",i:["Lotte","Ail"]},
+    {n:"Lotte chorizo",i:["Lotte","Chorizo"]},
+    {n:"Lotte confit d'oignon",i:["Lotte","Oignons paille x2"]},
+    {n:"Poisson au four",i:["Poisson"]},
+    {n:"Poisson barbecue",i:["Poisson"]},
+    {n:"Poisson pané",i:["Poisson","Chapelure","Farine","Œufs x10"]},
+    {n:"Ragoût de lotte",i:["Lotte","Oignons paille x2","Ail"]},
+    {n:"Saumon blinis crème fraîche",i:["Saumon frais","Blinis","Crème fraîche épaisse"]},
+    {n:"Thon cru sauce sashimi",i:["Thon"]},
+    {n:"Thon mi-cuit au sésame",i:["Thon","Sauce soja sucrée"]}
+  ],
+  "Pâtes / Riz / Nouilles":[
+    {n:"Cannelloni bœuf",i:["Cannelloni","Bœuf haché","Veau haché"]},
+    {n:"Cannelloni saumon ricotta épinard",i:["Cannelloni","Saumon frais","Ricotta","Épinard"]},
+    {n:"Lasagnes bœuf",i:["Lasagne","Bœuf haché","Veau haché"]},
+    {n:"Lasagnes thon",i:["Lasagne","Thon","Crème fraîche épaisse"]},
+    {n:"Nouilles chinoises bœuf",i:["Nouilles chinoises","Bœuf haché"]},
+    {n:"Nouilles chinoises crevettes",i:["Nouilles chinoises","Crevettes","Ail","Sauce soja sucrée"]},
+    {n:"Nouilles chinoises porc",i:["Nouilles chinoises","Porc Échine tranche"]},
+    {n:"Pâtes basilic",i:["Pâtes","Basilic","Pignons","Parmesan"]},
+    {n:"Pâtes bolognaises",i:["Pâtes","Bœuf haché","Veau haché","Coulis de tomates"]},
+    {n:"Pâtes boulettes",i:["Pâtes","Bœuf haché","Veau haché","Persil","Ail"]},
+    {n:"Pâtes carbonara",i:["Pâtes","Œufs x10","Parmesan"]},
+    {n:"Pâtes fraîches au citron",i:["Pâtes fraîches","Beurre","Citrons bio"]},
+    {n:"Pâtes poutargue",i:["Pâtes","Poutargue","Ail"]},
+    {n:"Pâtes saucisses italiennes",i:["Pâtes","Saucisse italienne","Échalotes","Ail","Concentré de tomates"]},
+    {n:"Ravioles à poêler",i:["Ravioles"]},
+    {n:"Ravioles de Roman",i:["Ravioles"]},
+    {n:"Riz sauté au poulet",i:["Blanc de poulet x8","Riz","Ail","Échalotes","Sauce soja sucrée"]},
+    {n:"Riz sauté aux crevettes",i:["Crevettes","Riz","Ail","Sauce soja sucrée"]}
+  ],
+  "Salade / Autre":[
+    {n:"Petits pois lardons",i:["Petit pois","Lardons x3","Échalotes"]},
+    {n:"Pizza",i:["Pâtes à pizza x3","Coulis de tomates","Basilic","Jambon","Jambon cru"]},
+    {n:"Quiche",i:["Pâte brisée x2","Crème fraîche épaisse","Lardons x3","Jambon","Œufs x10","Râpé"]},
+    {n:"Salade Caesar",i:["Salade romaine","Lardons x3","Blanc de poulet x8","Parmesan","Anchois"]},
+    {n:"Salade chèvre chaud",i:["Salade verte","Bûche de chèvre","Lardons x3"]},
+    {n:"Salade composée",i:["Thon","Œufs x10","Tomates normales x2","Concombre x2","Maïs","Champignons"]}
+  ],
+  "Accompagnements":[
+    {n:"Croustines",i:["Croustines"]},
+    {n:"Ebly",i:["Ebly"]},
+    {n:"Fèves",i:["Fèves"]},
+    {n:"Frites",i:["Frites allumettes"]},
+    {n:"Gnocchi",i:["Gnocchi"]},
+    {n:"Gratin dauphinois",i:["Pommes de terre","Crème fraîche épaisse","Ail"]},
+    {n:"Graine couscous",i:["Couscous"]},
+    {n:"Haricots verts",i:["Haricots verts"]},
+    {n:"Légumes tranchés fins au four",i:["Pommes de terre","Oignons paille x2","Fenouil","Poivrons rouge x2","Aubergines x5"]},
+    {n:"Pâtes",i:["Pâtes"]},
+    {n:"Pdt à rissoler",i:["Pommes de terre rissolées"]},
+    {n:"Pdt oignons tomates persillade au four",i:["Pommes de terre","Oignons paille x2","Tomates normales x2","Persil"]},
+    {n:"Perles de blé",i:["Perles de blé"]},
+    {n:"Pommes de terre au four",i:["Pommes de terre"]},
+    {n:"Pommes noisettes",i:["Pommes de terre noisettes"]},
+    {n:"Purée brocoli",i:["Brocolis"]},
+    {n:"Purée courge carotte",i:["Courge","Carotte"]},
+    {n:"Purée patate douce",i:["Patate douce"]},
+    {n:"Purée Pdt",i:["Pommes de terre","Beurre"]},
+    {n:"Purée Pdt à l'ail",i:["Pommes de terre","Ail"]},
+    {n:"Purée Pdt au pistou",i:["Pommes de terre","Basilic"]},
+    {n:"Purée petits pois carotte",i:["Petit pois","Carotte"]},
+    {n:"Ravioles",i:["Ravioles"]},
+    {n:"Riz",i:["Riz"]},
+    {n:"Salade verte",i:["Salade verte"]},
+    {n:"Tomates à la provençale",i:["Tomates normales x2","Ail","Persil","Chapelure"]}
+  ],
+  "Menus week-end":[
+    {n:"Alouette sans tête",i:[]},
+    {n:"Brick à la viande salade verte",i:["Bœuf haché","Salade verte"]},
+    {n:"Brick au thon salade verte",i:["Thon","Salade verte"]},
+    {n:"Cabillaud au four sauce chorizo",i:["Cabillaud","Chorizo"]},
+    {n:"Carré d'agneau Pdt sautées",i:["Carré d'agneau","Pommes de terre"]},
+    {n:"Confit de canard risotto safran",i:["Cuisses de canard","Risotto"]},
+    {n:"Coquelet frites salade",i:["Coquelets x3","Frites allumettes","Salade verte"]},
+    {n:"Côtelettes agneau frites salade",i:["Côtelettes","Frites allumettes","Salade verte"]},
+    {n:"Épaule agneau pommes de terre",i:["Épaule agneau","Pommes de terre"]},
+    {n:"Joue de bœuf",i:["Joue de bœuf","Oignons paille x2","Ail"]},
+    {n:"Moussaka",i:["Aubergines x5","Bœuf haché","Oignons paille x2","Concentré de tomates"]},
+    {n:"Osso-buco Pdt",i:["Osso bucco","Pommes de terre","Concentré de tomates","Oignons paille x2"]},
+    {n:"Pieds et paquets Pdt vapeur",i:["Pommes de terre"]},
+    {n:"Pierrade poisson",i:["Lotte","Calamar","Crevettes"]},
+    {n:"Pierrade viande",i:["Faux filet bœuf","Blanc de poulet x8","Saucisse toulouse"]},
+    {n:"Poulet aux morilles",i:["Poulet rôti"]},
+    {n:"Raclette",i:["Fromage raclette","Pommes de terre","Lardons x3","Jambon coupe","Saucisson"]},
+    {n:"Ragoût de lotte",i:["Lotte","Oignons paille x2","Ail"]},
+    {n:"Risotto champignons",i:["Risotto","Champignons"]},
+    {n:"Risotto tuile jambon cru",i:["Risotto","Jambon cru"]}
+  ]
+};
 
-function load(){ try{ const r=localStorage.getItem(SK); if(r) S=JSON.parse(r); }catch(e){} }
+// ── VIDEOS ────────────────────────────────────────────────────────────────
+const VIDEOS = {
+  "Entrées":[],
+  "Viande":[],
+  "Poisson":[],
+  "Pâtes / Riz / Nouilles":[],
+  "Salade / Autre":[],
+  "Accompagnements":[],
+  "Menus week-end":[]
+};
+const VIDEO_EMOJIS = {"Entrées":"🥗","Viande":"🥩","Poisson":"🐟","Pâtes / Riz / Nouilles":"🍝","Salade / Autre":"🥙","Accompagnements":"🥦","Menus week-end":"🍾"};
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+var SK = 'courses_v4';
+var S = {sel:{}, got:{}};
+var mode = 'maison';
+var q = '';
+var weekOffset = 0;
+
+function load(){ try{ var r=localStorage.getItem(SK); if(r) S=JSON.parse(r); }catch(e){} }
 function save(){ try{ localStorage.setItem(SK,JSON.stringify(S)); }catch(e){} }
 function kk(sn,it){ return sn+'||'+it; }
 function nrm(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
-function hl(txt){ if(!q) return txt; const n=nrm(txt),nq=nrm(q),i=n.indexOf(nq); if(i<0) return txt; return txt.slice(0,i)+'<mark>'+txt.slice(i,i+q.length)+'</mark>'+txt.slice(i+q.length); }
 function cntSel(){ return Object.keys(S.sel).length; }
 function cntGot(){ return Object.keys(S.got).length; }
-function cntPend(){ return Object.keys(S.sel).filter(k=>!S.got[k]).length; }
+function cntPend(){ return Object.keys(S.sel).filter(function(k){ return !S.got[k]; }).length; }
 
-// ── TOGGLE ───────────────────────────────────────────────────────────────
-function toggle(sn, it){
-  const k=kk(sn,it);
-  if(mode==='maison'){
-    if(S.sel[k]){ delete S.sel[k]; delete S.got[k]; }
-    else { S.sel[k]=1; }
-  } else if(mode==='magasin'){
-    if(S.got[k]){ delete S.got[k]; }
-    else { S.got[k]=1; }
-  }
-  save();
-  render();
-}
-
-// ── CONFIRM OVERLAY ───────────────────────────────────────────────────────
+// ── CONFIRM ───────────────────────────────────────────────────────────────
 function showConfirm(msg, onYes){
   document.getElementById('confirm-msg').textContent = msg;
   document.getElementById('overlay').className = 'overlay show';
-  document.getElementById('cb-yes').onclick = ()=>{
-    document.getElementById('overlay').className = 'overlay';
-    onYes();
-  };
-  document.getElementById('cb-no').onclick = ()=>{
-    document.getElementById('overlay').className = 'overlay';
-  };
+  document.getElementById('cb-yes').onclick = function(){ document.getElementById('overlay').className='overlay'; onYes(); };
+  document.getElementById('cb-no').onclick = function(){ document.getElementById('overlay').className='overlay'; };
 }
 
-// ── RESET ────────────────────────────────────────────────────────────────
-function reset(){
-  if(mode==='maison'){
-    showConfirm('Effacer toute la sélection ?', ()=>{ S={sel:{},got:{}}; save(); render(); });
-  } else if(mode==='magasin'){
-    showConfirm('Remettre tous les articles en "à prendre" ?', ()=>{ S.got={}; save(); render(); });
-  } else if(mode==='panier'){
-    showConfirm('Vider le panier ?', ()=>{ S.got={}; save(); render(); });
-  }
+// ── TOGGLE ────────────────────────────────────────────────────────────────
+function toggle(sn,it){
+  var k=kk(sn,it);
+  if(mode==='maison'){ if(S.sel[k]){ delete S.sel[k]; delete S.got[k]; } else { S.sel[k]=1; } }
+  else if(mode==='magasin'){ if(S.got[k]){ delete S.got[k]; } else { S.got[k]=1; } }
+  save(); render();
 }
 
-// ── BARCODE EAN-13 (pur SVG, sans lib) ──────────────────────────────────
-function drawBarcode(){
-  const num = '9240036667162';
-  // Encoding table EAN-13
-  const L=[
-    [0,0,0,1,1,0,1],[0,0,1,1,0,0,1],[0,0,1,0,0,1,1],[0,1,1,1,1,0,1],
-    [0,1,0,0,0,1,1],[0,1,1,0,0,0,1],[0,1,0,1,1,1,1],[0,1,1,1,0,1,1],
-    [0,1,1,0,1,1,1],[0,0,0,1,0,1,1]
-  ];
-  const G=[
-    [0,1,0,0,1,1,1],[0,1,1,0,0,1,1],[0,0,1,1,0,1,1],[0,1,0,0,0,0,1],
-    [0,0,1,1,1,0,1],[0,1,1,1,0,0,1],[0,0,0,0,1,0,1],[0,0,1,0,0,0,1],
-    [0,0,0,1,0,0,1],[0,0,1,0,1,1,1]
-  ];
-  const R=[
-    [1,1,1,0,0,1,0],[1,1,0,0,1,1,0],[1,1,0,1,1,0,0],[1,0,0,0,0,1,0],
-    [1,0,1,1,1,0,0],[1,0,0,1,1,1,0],[1,0,1,0,0,0,0],[1,0,0,0,1,0,0],
-    [1,0,0,1,0,0,0],[1,1,1,0,1,0,0]
-  ];
-  // First digit parity patterns
-  const P=[
-    [0,0,0,0,0,0],[0,0,1,0,1,1],[0,0,1,1,0,1],[0,0,1,1,1,0],
-    [0,1,0,0,1,1],[0,1,1,0,0,1],[0,1,1,1,0,0],[0,1,0,1,0,1],
-    [0,1,0,1,1,0],[0,1,1,0,1,0]
-  ];
-  const d = num.split('').map(Number);
-  const parity = P[d[0]];
-  let bars = [1,0,1]; // start guard
-  for(let i=0;i<6;i++){
-    const enc = parity[i]===0 ? L[d[i+1]] : G[d[i+1]];
-    bars = bars.concat(enc);
-  }
-  bars = bars.concat([0,1,0,1,0]); // middle guard
-  for(let i=7;i<13;i++) bars = bars.concat(R[d[i]]);
-  bars = bars.concat([1,0,1]); // end guard
+// ── RESET ─────────────────────────────────────────────────────────────────
+function doReset(){
+  if(mode==='maison'){ showConfirm('Effacer toute la sélection ?', function(){ S={sel:{},got:{}}; save(); render(); }); }
+  else if(mode==='magasin'){ showConfirm('Remettre tous les articles à prendre ?', function(){ S.got={}; save(); render(); }); }
+}
 
-  const svgEl = document.getElementById('bc');
-  const W = svgEl.parentElement.offsetWidth || 300;
-  const bw = W / bars.length;
-  const H = 80;
-  let rects = '';
-  bars.forEach((b,i)=>{
-    if(b) rects += `<rect x="${(i*bw).toFixed(2)}" y="0" width="${bw.toFixed(2)}" height="${H}" fill="#1a1207"/>`;
+// ── RECAP PANIER ──────────────────────────────────────────────────────────
+function recapPanier(){
+  var lines=['🧺 Mon panier :',''];
+  DATA.forEach(function(sec){
+    var items=sec.i.filter(function(it){ return S.got[kk(sec.n,it)]; });
+    if(!items.length) return;
+    lines.push(sec.e+' '+sec.n+' :');
+    items.forEach(function(it){ lines.push('  • '+it); });
+    lines.push('');
   });
-  svgEl.setAttribute('viewBox',`0 0 ${W} ${H}`);
-  svgEl.innerHTML = rects;
+  if(lines.length<=2){ showConfirm('Le panier est vide.', function(){}); return; }
+  var txt=lines.join('\n');
+  if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(function(){ showConfirm('✅ Récap copié !\nColle-le où tu veux.', function(){}); }); }
+  else { showConfirm(txt, function(){}); }
 }
 
-// ── RENDER ───────────────────────────────────────────────────────────────
-function render(){
-  const secsEl = document.getElementById('secs');
-  const carteEl = document.getElementById('carte');
-  const infoBar = document.getElementById('info-bar');
-  const srch = document.getElementById('srch');
+// ── BARCODE ───────────────────────────────────────────────────────────────
+function drawBarcode(){
+  var num='9240036667162';
+  var L=[[0,0,0,1,1,0,1],[0,0,1,1,0,0,1],[0,0,1,0,0,1,1],[0,1,1,1,1,0,1],[0,1,0,0,0,1,1],[0,1,1,0,0,0,1],[0,1,0,1,1,1,1],[0,1,1,1,0,1,1],[0,1,1,0,1,1,1],[0,0,0,1,0,1,1]];
+  var G=[[0,1,0,0,1,1,1],[0,1,1,0,0,1,1],[0,0,1,1,0,1,1],[0,1,0,0,0,0,1],[0,0,1,1,1,0,1],[0,1,1,1,0,0,1],[0,0,0,0,1,0,1],[0,0,1,0,0,0,1],[0,0,0,1,0,0,1],[0,0,1,0,1,1,1]];
+  var R=[[1,1,1,0,0,1,0],[1,1,0,0,1,1,0],[1,1,0,1,1,0,0],[1,0,0,0,0,1,0],[1,0,1,1,1,0,0],[1,0,0,1,1,1,0],[1,0,1,0,0,0,0],[1,0,0,0,1,0,0],[1,0,0,1,0,0,0],[1,1,1,0,1,0,0]];
+  var P=[[0,0,0,0,0,0],[0,0,1,0,1,1],[0,0,1,1,0,1],[0,0,1,1,1,0],[0,1,0,0,1,1],[0,1,1,0,0,1],[0,1,1,1,0,0],[0,1,0,1,0,1],[0,1,0,1,1,0],[0,1,1,0,1,0]];
+  var d=num.split('').map(Number);
+  var parity=P[d[0]];
+  var bars=[1,0,1];
+  for(var i=0;i<6;i++) bars=bars.concat(parity[i]===0?L[d[i+1]]:G[d[i+1]]);
+  bars=bars.concat([0,1,0,1,0]);
+  for(var i=7;i<13;i++) bars=bars.concat(R[d[i]]);
+  bars=bars.concat([1,0,1]);
+  var svgEl=document.getElementById('bc');
+  var W=svgEl.parentElement.offsetWidth||300;
+  var bw=W/bars.length; var H=80; var rects='';
+  bars.forEach(function(b,i){ if(b) rects+='<rect x="'+(i*bw).toFixed(2)+'" y="0" width="'+bw.toFixed(2)+'" height="'+H+'" fill="#1a1207"/>'; });
+  svgEl.setAttribute('viewBox','0 0 '+W+' '+H);
+  svgEl.innerHTML=rects;
+}
 
-  // Tabs highlight
-  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.dataset.m===mode));
-
-  if(mode==='carte'){
-    secsEl.style.display='none';
-    carteEl.className='carte show';
-    infoBar.style.display='none';
-    srch.className='srch';
-    document.getElementById('btm-inf').innerHTML='💳 Monoprix';
-    document.getElementById('btm-btn').textContent='🏠 Ma liste';
-    document.getElementById('btm-btn').onclick=()=>{mode='maison';render();};
-    drawBarcode();
-    return;
-  }
-
-  secsEl.style.display='';
-  carteEl.className='carte';
-  infoBar.style.display='';
-  srch.className='srch'+(mode==='maison'?' show':'');
-
-  // Info bar
-  const ib = document.getElementById('info-n');
-  const bb = document.getElementById('info-b');
-  const it = document.getElementById('info-t');
-  const itotal = document.getElementById('info-total');
-  ib.className = 'info-n c-'+mode;
-  if(mode==='maison'){ bb.textContent=cntSel(); it.textContent=' sélectionné(s)'; itotal.textContent='/ '+TOTAL+' articles'; }
-  else if(mode==='magasin'){ bb.textContent=cntPend(); it.textContent=' à prendre'; itotal.textContent=''; }
-  else { bb.textContent=cntGot(); it.textContent=' dans le panier'; itotal.textContent=''; }
-
-  // Bottom
-  const bi=document.getElementById('btm-inf'), btn=document.getElementById('btm-btn');
-  if(mode==='maison'){
-    bi.innerHTML='<strong>'+cntSel()+'</strong> sélectionné(s)';
-    btn.textContent='🛍️ Aller en magasin';
-    btn.onclick=()=>{mode='magasin';render();};
-  } else if(mode==='magasin'){
-    bi.innerHTML='🧺 Panier : <strong>'+cntGot()+'</strong>';
-    btn.textContent='Voir le panier';
-    btn.onclick=()=>{mode='panier';render();};
-  } else {
-    bi.innerHTML='<strong>'+cntGot()+'</strong> pris';
-    btn.textContent='🛍️ Retour magasin';
-    btn.onclick=()=>{mode='magasin';render();};
-  }
-
-  // Mode class
+// ── RENDER SECTIONS ───────────────────────────────────────────────────────
+function renderSections(){
+  var secsEl=document.getElementById('secs');
   secsEl.className='secs m-'+mode;
   secsEl.innerHTML='';
-
-  let any=false;
-  DATA.forEach(sec=>{
-    let items=sec.i;
-    if(mode==='magasin') items=items.filter(it=>S.sel[kk(sec.n,it)]&&!S.got[kk(sec.n,it)]);
-    else if(mode==='panier') items=items.filter(it=>S.got[kk(sec.n,it)]);
-    if(q) items=items.filter(it=>nrm(it).includes(nrm(q)));
+  var any=false;
+  DATA.forEach(function(sec){
+    var items=sec.i.slice();
+    if(mode==='magasin') items=items.filter(function(it){ return S.sel[kk(sec.n,it)]&&!S.got[kk(sec.n,it)]; });
+    if(q) items=items.filter(function(it){ return nrm(it).includes(nrm(q)); });
     if(!items.length) return;
     any=true;
-
-    const sd=document.createElement('div'); sd.className='sec';
-    const sh=document.createElement('div'); sh.className='sec-hdr';
+    var sd=document.createElement('div'); sd.className='sec';
+    var sh=document.createElement('div'); sh.className='sec-hdr';
     sh.innerHTML='<div class="sec-name"><span>'+sec.e+'</span>'+sec.n+'</div><div class="sec-meta"><span class="sec-ct">'+items.length+'</span><span class="chev">▾</span></div>';
-    sh.addEventListener('click',()=>sd.classList.toggle('fold'));
-    const sb=document.createElement('div'); sb.className='sec-body';
-    items.forEach(it=>{
-      const k=kk(sec.n,it);
-      const div=document.createElement('div');
-      let cls='itm';
+    sh.addEventListener('click',function(){ sd.classList.toggle('fold'); });
+    var sb=document.createElement('div'); sb.className='sec-body';
+    items.forEach(function(it){
+      var k=kk(sec.n,it);
+      var div=document.createElement('div');
+      var cls='itm';
       if(mode==='maison'&&S.sel[k]) cls+=' sel';
       if(mode==='magasin'&&S.got[k]) cls+=' got';
-      if(mode==='panier') cls+=' got';
       div.className=cls;
-      div.innerHTML='<div class="box"><span class="ck">✓</span></div><div class="lbl">'+hl(it)+'</div>';
-      div.addEventListener('click',()=>toggle(sec.n,it));
+      div.innerHTML='<div class="box"><span class="ck">✓</span></div><div class="lbl">'+it+'</div>';
+      div.addEventListener('click',function(){ toggle(sec.n,it); });
       sb.appendChild(div);
     });
     sd.appendChild(sh); sd.appendChild(sb); secsEl.appendChild(sd);
   });
-
   if(!any){
-    const e=document.createElement('div'); e.className='empty';
-    if(mode==='maison') e.innerHTML='<div class="ei">📝</div>Aucun article trouvé.';
-    else if(mode==='magasin') e.innerHTML='<div class="ei">🎉</div>Tous les articles sont dans le panier !';
-    else e.innerHTML='<div class="ei">🧺</div>Le panier est vide.<br>Décoche des articles en mode Magasin.';
+    var e=document.createElement('div'); e.className='empty';
+    e.innerHTML='<div class="ei">'+(mode==='maison'?'📝':'🎉')+'</div>'+(mode==='maison'?'Aucun article trouvé.':'Tous les articles sont pris !');
     secsEl.appendChild(e);
   }
 }
 
-// ── EVENTS ───────────────────────────────────────────────────────────────
-document.getElementById('rst').addEventListener('click', reset);
+// ── RENDER VIDEOS ─────────────────────────────────────────────────────────
+function renderVideos(){
+  var page=document.getElementById('video-page');
+  page.innerHTML='';
+  Object.keys(VIDEOS).forEach(function(cat){
+    var items=VIDEOS[cat];
+    var sec=document.createElement('div'); sec.className='video-sec';
+    var hdr=document.createElement('div'); hdr.className='video-sec-hdr';
+    hdr.innerHTML='<div class="video-sec-name"><span>'+(VIDEO_EMOJIS[cat]||'🎬')+'</span>'+cat+'</div><div style="display:flex;align-items:center;gap:7px"><span class="video-sec-ct">'+items.length+'</span><span class="chev-v">▾</span></div>';
+    hdr.addEventListener('click',function(){ sec.classList.toggle('fold'); });
+    var body=document.createElement('div'); body.className='video-body';
+    if(!items.length){
+      var emp=document.createElement('div'); emp.className='video-empty'; emp.textContent='Aucune vidéo dans cette catégorie.'; body.appendChild(emp);
+    } else {
+      items.forEach(function(v){
+        var row=document.createElement('div'); row.className='video-item';
+        var nm=document.createElement('div'); nm.className='video-name'; nm.textContent=v.n;
+        var lk=document.createElement('a'); lk.className='video-link'; lk.textContent='▶ Voir'; lk.href=v.url; lk.target='_blank';
+        row.appendChild(nm); row.appendChild(lk); body.appendChild(row);
+      });
+    }
+    sec.appendChild(hdr); sec.appendChild(body); page.appendChild(sec);
+  });
+}
 
-document.getElementById('sinput').addEventListener('input',function(){
-  q=this.value.trim();
-  document.getElementById('sx').style.display=q?'block':'none';
-  render();
-});
-document.getElementById('sx').addEventListener('click',()=>{
-  document.getElementById('sinput').value=''; q='';
-  document.getElementById('sx').style.display='none';
-  render();
-});
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',()=>{ mode=t.dataset.m; render(); });
-});
+// ── RENDER MENUS ──────────────────────────────────────────────────────────
+function getWeekKey(offset){
+  var now=new Date(); var day=now.getDay();
+  var monday=new Date(now); monday.setDate(now.getDate()-(day===0?6:day-1)+offset*7);
+  var y=monday.getFullYear(),m=String(monday.getMonth()+1).padStart(2,'0'),d=String(monday.getDate()).padStart(2,'0');
+  return y+'-'+m+'-'+d;
+}
+function getWeekLabel(offset){
+  var wk=getWeekKey(offset); var d=new Date(wk); var end=new Date(wk); end.setDate(end.getDate()+6);
+  return 'Semaine du '+d.getDate()+'/'+(d.getMonth()+1)+' au '+end.getDate()+'/'+(end.getMonth()+1);
+}
+function menuKey(wk,jour,moment,cours){ return 'menu||'+wk+'||'+jour+'||'+moment+'||'+cours; }
+function getMenu(wk,jour,moment,cours){ try{ return localStorage.getItem(menuKey(wk,jour,moment,cours))||''; }catch(e){ return ''; } }
+function setMenu(wk,jour,moment,cours,val){ try{ if(val) localStorage.setItem(menuKey(wk,jour,moment,cours),val); else localStorage.removeItem(menuKey(wk,jour,moment,cours)); }catch(e){} }
+function findRecette(nom){ var found=null; Object.values(RECETTES).forEach(function(arr){ arr.forEach(function(r){ if(r.n===nom) found=r; }); }); return found; }
 
-load(); render();
+function renderMenus(){
+  var wk=getWeekKey(weekOffset);
+  document.getElementById('week-label').textContent=getWeekLabel(weekOffset);
+  var container=document.getElementById('days-container');
+  container.innerHTML='';
+  var JOURS=["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
+  var MOMENTS=["Midi","Soir"];
+  var COURSES=["Entrée","Plat"];
+  JOURS.forEach(function(jour){
+    var card=document.createElement('div'); card.className='day-card';
+    var title=document.createElement('div'); title.className='day-title'; title.textContent=jour;
+    card.appendChild(title);
+    MOMENTS.forEach(function(moment){
+      var block=document.createElement('div'); block.className='repas-block';
+      COURSES.forEach(function(cours){
+        var choix=getMenu(wk,jour,moment,cours);
+        var rh=document.createElement('div'); rh.className='repas-header';
+        var left=document.createElement('div');
+        left.innerHTML='<div class="repas-label">'+moment+' · '+cours+'</div>'+(choix?'<div class="repas-plat">'+choix+'</div>':'');
+        var btn=document.createElement('button'); btn.className='repas-add'; btn.textContent=choix?'✏️':'+ Ajouter';
+        var picker=document.createElement('div'); picker.className='plat-picker';
+        btn.addEventListener('click',function(e){
+          e.stopPropagation();
+          document.querySelectorAll('.plat-picker.show').forEach(function(p){ if(p!==picker) p.classList.remove('show'); });
+          picker.classList.toggle('show');
+          if(!picker.dataset.built){ buildPicker(picker,wk,jour,moment,cours,choix); picker.dataset.built='1'; }
+        });
+        rh.appendChild(left); rh.appendChild(btn);
+        block.appendChild(rh); block.appendChild(picker);
+        if(choix){
+          var rec=findRecette(choix);
+          if(rec&&rec.i.length>0){
+            var ingList=document.createElement('div'); ingList.className='ingr-list';
+            rec.i.forEach(function(ingr){
+              var linkedKey=null;
+              DATA.forEach(function(sec){ sec.i.forEach(function(it){ if(it===ingr) linkedKey=kk(sec.n,it); }); });
+              var checked=linkedKey?!!S.sel[linkedKey]:false;
+              var row=document.createElement('div'); row.className='ingr-item';
+              var box=document.createElement('div'); box.className='ingr-check'+(checked?' on':'');
+              var lbl=document.createElement('div'); lbl.className='ingr-name '+(linkedKey?'linked':'unlinked');
+              lbl.textContent=ingr+(linkedKey?'':' ⚠️');
+              box.addEventListener('click',function(){
+                var isOn=box.classList.contains('on');
+                box.classList.toggle('on');
+                if(linkedKey){ if(!isOn){ S.sel[linkedKey]=1; } else { delete S.sel[linkedKey]; delete S.got[linkedKey]; } save(); }
+              });
+              row.appendChild(box); row.appendChild(lbl); ingList.appendChild(row);
+            });
+            block.appendChild(ingList);
+          }
+        }
+        card.appendChild(block);
+      });
+    });
+    container.appendChild(card);
+  });
+}
 
+function buildPicker(picker,wk,jour,moment,cours,current){
+  picker.innerHTML='';
+  if(current){
+    var clearBtn=document.createElement('button'); clearBtn.className='plat-btn';
+    clearBtn.style.color='var(--orange)'; clearBtn.textContent='❌ Effacer';
+    clearBtn.addEventListener('click',function(){ setMenu(wk,jour,moment,cours,''); picker.classList.remove('show'); picker.dataset.built=''; renderMenus(); });
+    picker.appendChild(clearBtn);
+  }
+  Object.keys(RECETTES).forEach(function(cat){
+    var catTitle=document.createElement('div'); catTitle.className='plat-cat-title'; catTitle.textContent=cat;
+    picker.appendChild(catTitle);
+    RECETTES[cat].forEach(function(r){
+      var b=document.createElement('button'); b.className='plat-btn'+(r.n===current?' chosen':''); b.textContent=r.n;
+      b.addEventListener('click',function(){ setMenu(wk,jour,moment,cours,r.n); picker.classList.remove('show'); picker.dataset.built=''; renderMenus(); });
+      picker.appendChild(b);
+    });
+  });
+}
+
+// Recherche dans menus
+function initMenuSearch(){
+  var input=document.getElementById('menu-sinput');
+  var results=document.getElementById('menu-results');
+  var main=document.getElementById('menu-main');
+  input.addEventListener('input',function(){
+    var sq=this.value.trim();
+    if(!sq){ results.className='menu-search-results'; results.innerHTML=''; main.style.display=''; return; }
+    main.style.display='none';
+    results.className='menu-search-results show';
+    results.innerHTML='';
+    var nsq=nrm(sq); var found=false;
+    Object.keys(RECETTES).forEach(function(cat){
+      var matches=RECETTES[cat].filter(function(r){ return nrm(r.n).includes(nsq); });
+      if(!matches.length) return;
+      found=true;
+      var sec=document.createElement('div'); sec.className='day-card'; sec.style.marginBottom='8px';
+      var t=document.createElement('div'); t.className='day-title'; t.textContent=cat; sec.appendChild(t);
+      matches.forEach(function(r){
+        var row=document.createElement('div');
+        row.style.cssText='padding:11px 13px;border-bottom:1px solid var(--border);font-size:15px;';
+        row.textContent=r.n; sec.appendChild(row);
+      });
+      results.appendChild(sec);
+    });
+    if(!found) results.innerHTML='<div class="empty"><div class="ei">🔍</div>Aucun plat trouvé.</div>';
+  });
+}
+
+// ── RENDER PRINCIPAL ──────────────────────────────────────────────────────
+function render(){
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.toggle('on',t.dataset.m===mode); });
+  var secsEl=document.getElementById('secs');
+  var carteEl=document.getElementById('carte');
+  var menuEl=document.getElementById('menu-page');
+  var videoEl=document.getElementById('video-page');
+  var infoBar=document.getElementById('info-bar');
+  var srch=document.getElementById('srch');
+  // Hide all pages
+  secsEl.style.display='none'; carteEl.className='carte'; menuEl.className='menu-page'; videoEl.className='video-page'; infoBar.style.display='none'; srch.className='srch';
+
+  var bi=document.getElementById('btm-inf'), btn=document.getElementById('btm-btn');
+
+  if(mode==='maison'){
+    secsEl.style.display=''; infoBar.style.display=''; srch.className='srch show';
+    document.getElementById('info-n').className='info-n c-orange';
+    document.getElementById('info-b').textContent=cntSel();
+    document.getElementById('info-t').textContent=' sélectionné(s)';
+    document.getElementById('info-total').textContent='/ '+TOTAL+' articles';
+    bi.innerHTML='<strong>'+cntSel()+'</strong> sélectionné(s)';
+    btn.textContent='🛍️ Aller en magasin';
+    btn.onclick=function(){ mode='magasin'; render(); };
+    renderSections();
+  } else if(mode==='magasin'){
+    secsEl.style.display=''; infoBar.style.display='';
+    document.getElementById('info-n').className='info-n c-blue';
+    document.getElementById('info-b').textContent=cntPend();
+    document.getElementById('info-t').textContent=' à prendre';
+    document.getElementById('info-total').textContent='';
+    bi.innerHTML='✅ Pris : <strong>'+cntGot()+'</strong>';
+    btn.textContent='📋 Récap';
+    btn.onclick=function(){ recapPanier(); };
+    renderSections();
+  } else if(mode==='carte'){
+    carteEl.className='carte show';
+    bi.innerHTML='💳 Monoprix';
+    btn.textContent='🏠 Ma liste';
+    btn.onclick=function(){ mode='maison'; render(); };
+    drawBarcode();
+  } else if(mode==='menus'){
+    menuEl.className='menu-page show';
+    bi.innerHTML='🍽️ Menus de la semaine';
+    btn.textContent='📋 Récap semaine';
+    btn.onclick=function(){ recapSemaine(); };
+    renderMenus();
+  } else if(mode==='videos'){
+    videoEl.className='video-page show';
+    bi.innerHTML='🎬 Mes recettes vidéo';
+    btn.textContent='🏠 Ma liste';
+    btn.onclick=function(){ mode='maison'; render(); };
+    renderVideos();
+  }
+}
+
+// ── RECAP SEMAINE ─────────────────────────────────────────────────────────
+function recapSemaine(){
+  var wk=getWeekKey(weekOffset);
+  var lines=['📅 '+getWeekLabel(weekOffset),''];
+  var JOURS=["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
+  var MOMENTS=["Midi","Soir"]; var COURSES=["Entrée","Plat"];
+  JOURS.forEach(function(jour){
+    var dayLines=[]; var hasContent=false;
+    MOMENTS.forEach(function(moment){
+      var repasLines=[];
+      COURSES.forEach(function(cours){ var choix=getMenu(wk,jour,moment,cours); if(choix) repasLines.push('  '+cours+' : '+choix); });
+      if(repasLines.length){ hasContent=true; dayLines.push(' '+moment); dayLines=dayLines.concat(repasLines); }
+    });
+    if(hasContent){ lines.push(jour+' :'); lines=lines.concat(dayLines); lines.push(''); }
+  });
+  if(lines.length<=2){ showConfirm('Aucun menu planifié cette semaine.', function(){}); return; }
+  var txt=lines.join('\n');
+  if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(function(){ showConfirm('✅ Récap copié !\nColle-le où tu veux.', function(){}); }); }
+  else { showConfirm(txt, function(){}); }
+}
+
+// ── EVENTS ────────────────────────────────────────────────────────────────
+document.getElementById('rst').addEventListener('click', doReset);
+document.getElementById('sinput').addEventListener('input',function(){ q=this.value.trim(); document.getElementById('sx').style.display=q?'block':'none'; render(); });
+document.getElementById('sx').addEventListener('click',function(){ document.getElementById('sinput').value=''; q=''; document.getElementById('sx').style.display='none'; render(); });
+document.querySelectorAll('.tab').forEach(function(t){ t.addEventListener('click',function(){ mode=t.dataset.m; render(); }); });
+document.getElementById('prev-week').addEventListener('click',function(){ weekOffset--; renderMenus(); });
+document.getElementById('next-week').addEventListener('click',function(){ weekOffset++; renderMenus(); });
+
+load();
+initMenuSearch();
+render();
 </script>
 </body>
 </html>
