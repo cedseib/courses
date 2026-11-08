@@ -1013,5 +1013,8 @@ initMenuSearch();
 initAdmin();
 render();
 </script>
+<script>
+(function(){var b=document.createElement('button');b.textContent='📤 Exporter mes données';b.style.cssText='position:fixed;top:70px;left:12px;right:12px;z-index:99999;padding:16px;font-size:17px;background:#2a6b3c;color:#fff;border:none;border-radius:12px';b.onclick=function(){var k={};for(var i=0;i<localStorage.length;i++){var n=localStorage.key(i);k[n]=localStorage.getItem(n);}var t=JSON.stringify({oldapp:true,keys:k});var d=document.createElement('textarea');d.value=t;d.style.cssText='position:fixed;top:140px;left:12px;right:12px;height:40vh;z-index:99999;font-size:16px';document.body.appendChild(d);d.select();d.setSelectionRange(0,t.length);try{document.execCommand('copy');b.textContent='✅ Copié ! Colle-le dans la nouvelle appli';}catch(e){b.textContent='Copie le texte ci-dessous';}};document.body.appendChild(b);})();
+</script>
 </body>
 </html>
